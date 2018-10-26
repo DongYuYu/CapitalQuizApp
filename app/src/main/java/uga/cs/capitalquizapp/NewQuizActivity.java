@@ -1,4 +1,4 @@
-package edu.uga.cs.statecapitalquiz;
+package uga.cs.capitalquizapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
