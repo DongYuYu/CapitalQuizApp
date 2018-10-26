@@ -50,6 +50,7 @@ public class QuestionsSqlOpenHelper extends SQLiteOpenHelper {
     private  static final String tag = "SQLIDEG";
     public static final String TABLE_QUIZ = "quiz";
     public static final String QUIZ_ID ="quiz_id";
+    public static final String QUIZ_DATE = "quiz_data";
     public static final String QUIZ_RESULT = "quiz_res";
     // This is a reference to the only instance for the helper.
     private static QuestionsSqlOpenHelper helperInstance;
@@ -72,6 +73,9 @@ public class QuestionsSqlOpenHelper extends SQLiteOpenHelper {
 
             "create table " + TABLE_QUIZ + " ("
                     + QUIZ_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+
+
+                    + QUIZ_DATE + " TEXT, "
                     + QUIZ_RESULT + " INTEGER"
 
 

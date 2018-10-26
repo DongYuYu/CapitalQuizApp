@@ -200,15 +200,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     */
+    @Override
+    protected void onRestart() {
+        Log.d( DEBUG_TAG, "StartQuizActivity.onRestart()" );
+        super.onRestart();
 
+
+
+
+    }
 }
 
-        @Override
-        protected void onRestart() {
-            Log.d( DEBUG_TAG, "StartQuizActivity.onRestart()" );
-            super.onRestart();
-        }
-}
+
+
 
 
 

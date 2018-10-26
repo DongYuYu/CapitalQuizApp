@@ -47,7 +47,20 @@ public class Question {
     public void setId(long id) {
         this.id = id;
     }
+    public String getState() {
+        return state;
+    }
+
+
     public String getCapital() {
         return capital;
+    }
+
+    public String getCity1() {
+        return city1;
+    }
+
+    public String getCity2() {
+        return city2;
     }
 }

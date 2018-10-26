@@ -1,4 +1,4 @@
-package edu.uga.cs.statecapitalquiz;
+package uga.cs.capitalquizapp;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,10 +21,13 @@ public class ReviewQuizActivity extends AppCompatActivity {
     private RecyclerView.Adapter recyclerAdapter;
 
   //  private QuizData quizData = null;
-    private List<Quiz> quizList;
-
+    private List<Question> quizList;
     @Override
     protected void onCreate(Bundle savedOnInstanceState) {
+
+
+
+        super.onCreate(savedOnInstanceState);
         Log.d(DEBUG_TAG, "ReviewQuizActivity.onCreate()");
 
       //  super.onCreate(savedInstanceState);
@@ -44,11 +47,11 @@ public class ReviewQuizActivity extends AppCompatActivity {
         new RetrieveQuizTask().execute();
     }
 
-    public class RetrieveQuizTask extends AsyncTask<Void, Void, List<Quiz>> {
+    public class RetrieveQuizTask extends AsyncTask<Void, Void, List<Question>> {
 
         //this method will run as a background process to read from db.
         @Override
-        protected List<Quiz> doInBackground(Void... params) {
+        protected List<Question> doInBackground(Void... params) {
            // quizData.open();
           //  quizList = quizData.retrieveAllQuizzes();
 
@@ -62,7 +65,7 @@ public class ReviewQuizActivity extends AppCompatActivity {
     //is finished. It will then create and set an adapter to provide values for the RecyclerView.
 
    // @Override
-    protected void onPostExecute(List<Quiz> quizList) {
+    protected void onPostExecute(List<Question> quizList) {
       //  super.onPostExecute(quizList);
       //  recyclerAdapter = new QuizRecyclerAdapter (quizList);
         recyclerView.setAdapter(recyclerAdapter);
