@@ -2,6 +2,7 @@ package uga.cs.capitalquizapp;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
     private QuestionsData  questionsData = null;
     private List<Question> questionsList;
+
+    private Button startQuiz;
+    private Button quizResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
         SQLiteStudioService.instance().start(this);
        // questionsData.close();
        // getApplicationContext().deleteDatabase("capital");
+
+        startQuiz = (Button) findViewById(R.id.button);
+        quizResults = (Button) findViewById(R.id.button);
+        startQuiz.setOnClickListener(new ButtonClickListener());
+       // quizResults.setOnClickListener(new ReviewButtonClickListener());
     }
 
     public class RetrieveJobLeadTask extends AsyncTask<Void, Void, List<Question>> {
@@ -171,6 +182,26 @@ public class MainActivity extends AppCompatActivity {
             Log.d( DEBUG_TAG, "StartQuizActivity.onDestroy()" );
             super.onDestroy();
         }
+
+    private class ButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick (View view) {
+            Intent intent = new Intent(view.getContext(), NewQuizActivity.class);
+            view.getContext().startActivity(intent);
+
+        }
+    }
+    /*
+    private class ReviewButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onCLick (View view) {
+            Intent intent = new Intent(view.getContext(), ReviewQuizActivity.class);
+            view.getContext().startActivity(intent);
+        }
+    }
+    */
+
+}
 
         @Override
         protected void onRestart() {
