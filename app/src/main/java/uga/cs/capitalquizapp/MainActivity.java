@@ -86,9 +86,13 @@ public class MainActivity extends AppCompatActivity {
        // getApplicationContext().deleteDatabase("capital");
 
         startQuiz = (Button) findViewById(R.id.button);
-        quizResults = (Button) findViewById(R.id.button);
+        quizResults = (Button) findViewById(R.id.button2);
         startQuiz.setOnClickListener(new ButtonClickListener());
        // quizResults.setOnClickListener(new ReviewButtonClickListener());
+
+
+
+        quizResults.setOnClickListener(new ReviewButtonClickListener());
     }
 
     public class RetrieveJobLeadTask extends AsyncTask<Void, Void, List<Question>> {
@@ -186,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
     private class ButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick (View view) {
-            Intent intent = new Intent(view.getContext(), NewQuizActivity.class);
+            Intent intent = new Intent(view.getContext(), NewPagerActivity.class);
             view.getContext().startActivity(intent);
 
         }
@@ -200,6 +204,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     */
+
+
+
+    private class ReviewButtonClickListener implements View.OnClickListener {
+        public void onClick (View view) {
+            Intent intent = new Intent(view.getContext(), ReviewQuizActivity.class);
+            view.getContext().startActivity(intent);
+        }
+    }
     @Override
     protected void onRestart() {
         Log.d( DEBUG_TAG, "StartQuizActivity.onRestart()" );

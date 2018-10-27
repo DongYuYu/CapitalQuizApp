@@ -20,17 +20,17 @@ public class ReviewQuizActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter recyclerAdapter;
 
-  //  private QuizData quizData = null;
-    private List<Question> quizList;
+    private QuestionsData quizData = null;
+    private List<Quiz> quizList;
+
     @Override
     protected void onCreate(Bundle savedOnInstanceState) {
-
 
 
         super.onCreate(savedOnInstanceState);
         Log.d(DEBUG_TAG, "ReviewQuizActivity.onCreate()");
 
-      //  super.onCreate(savedInstanceState);
+        //super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_quiz);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -40,35 +40,39 @@ public class ReviewQuizActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         //create a QuizData instance, so that we can save a new Quiz to the db.
-       //  quizData = new QuizData(this);
+        quizData = new QuestionsData(this);
 
 
         //Execute the retrieval of quiz in an asynchronous way, without blocking the UI thread
         new RetrieveQuizTask().execute();
     }
 
-    public class RetrieveQuizTask extends AsyncTask<Void, Void, List<Question>> {
+    public class RetrieveQuizTask extends AsyncTask<Void, Void, List<Quiz>> {
 
         //this method will run as a background process to read from db.
         @Override
-        protected List<Question> doInBackground(Void... params) {
-           // quizData.open();
-          //  quizList = quizData.retrieveAllQuizzes();
+        protected List<Quiz> doInBackground(Void... params) {
+            quizData.open();
 
-            Log.d(DEBUG_TAG, "RetrieveQuizTask: Quiz retrieved: " +quizList.size());
+
+            quizList = quizData.retrieveAllQuizzes();
+
+            Log.d(DEBUG_TAG, "RetrieveQuizTask: Quiz retrieved: " + quizList.size());
 
             return quizList;
         }
+
+
+        //This method will automatically be called by Android once the Db reading background process
+        //is finished. It will then create and set an adapter to provide values for the RecyclerView.
+
+
+        // @Override
+        protected void onPostExecute(List<Quiz> quizList) {
+            super.onPostExecute(quizList);
+            recyclerAdapter = new QuizRecyclerAdapter(quizList);
+            recyclerView.setAdapter(recyclerAdapter);
+        }
+
     }
-
-    //This method will automatically be called by Android once the Db reading background process
-    //is finished. It will then create and set an adapter to provide values for the RecyclerView.
-
-   // @Override
-    protected void onPostExecute(List<Question> quizList) {
-      //  super.onPostExecute(quizList);
-      //  recyclerAdapter = new QuizRecyclerAdapter (quizList);
-        recyclerView.setAdapter(recyclerAdapter);
-    }
-
 }

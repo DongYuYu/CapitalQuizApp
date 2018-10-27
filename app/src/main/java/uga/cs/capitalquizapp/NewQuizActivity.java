@@ -86,6 +86,10 @@ public class NewQuizActivity extends AppCompatActivity {
 
         new RetrieveJobLeadTask().execute(ids);
     }
+
+
+
+
     public class RetrieveJobLeadTask extends AsyncTask<Set<Integer>, Void, List<Question>> {
 
         // This method will run as a background process to read from db.
@@ -167,7 +171,8 @@ public class NewQuizActivity extends AppCompatActivity {
             questionsData.open();
             long qid = -1;
             for (Set<Integer> id : ids) {
-                qid = questionsData.storeJobLead(id);
+
+                qid = questionsData.storeJobLead(id, 23);
             }
             return qid;
 

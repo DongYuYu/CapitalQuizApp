@@ -65,8 +65,10 @@ public class StartQuizActivity extends AppCompatActivity {
 
     }
 
-    public class RetrieveJobLeadTask extends AsyncTask<Void, Void, List<Question>> {
 
+
+
+    public class RetrieveJobLeadTask extends AsyncTask<Void, Void, List<Question>> {
         // This method will run as a background process to read from db.
 
 
