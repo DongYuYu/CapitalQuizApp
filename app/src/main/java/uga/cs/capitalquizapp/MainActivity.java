@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
     private class ButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick (View view) {
-            Intent intent = new Intent(view.getContext(), NewQuizActivity.class);
+            Intent intent = new Intent(view.getContext(), NewPagerActivity.class);
             view.getContext().startActivity(intent);
 
         }

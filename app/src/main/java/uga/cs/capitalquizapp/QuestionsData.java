@@ -11,6 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+
+
+
+
+
+
+
+
+
+import java.util.Calendar;
+
 public class QuestionsData {
     public static final String DEBUG_TAG = "JobLeadsData";
 
@@ -172,7 +183,7 @@ public class QuestionsData {
 
 
     // Store a new job lead in the database
-    public long storeJobLead( Set<Integer> ids ) {
+    public long storeJobLead( Set<Integer> ids , int res) {
 
         // Prepare the values for all of the necessary columns in the table
         // and set their values to the variables of the JobLead argument.
@@ -181,8 +192,8 @@ public class QuestionsData {
 
 
         ContentValues quizValues = new ContentValues();
-        quizValues.put( QuestionsSqlOpenHelper.QUIZ_DATE, "3/3");
-        quizValues.put( QuestionsSqlOpenHelper.QUIZ_RESULT, 10 );
+        quizValues.put( QuestionsSqlOpenHelper.QUIZ_DATE, String.valueOf(Calendar.getInstance().getTime()));
+        quizValues.put( QuestionsSqlOpenHelper.QUIZ_RESULT, res );
 
 
         // Insert the new row into the database table;  the id (primary key) will be
