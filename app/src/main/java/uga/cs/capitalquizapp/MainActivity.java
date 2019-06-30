@@ -16,7 +16,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
-import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
+//import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
 import android.view.View;
 import android.widget.Button;
 
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         new MainActivity.RetrieveJobLeadTask().execute();
-        SQLiteStudioService.instance().start(this);
+        //SQLiteStudioService.instance().start(this);
        // questionsData.close();
        // getApplicationContext().deleteDatabase("capital");
 
